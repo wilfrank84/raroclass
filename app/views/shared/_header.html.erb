@@ -1,0 +1,19 @@
+<header class="flex [&>*]:flex-1 bg-slate-200 p-7">
+  <section class="font-black text-2xl">
+    <h1>RaroClass</h1>
+  </section>
+  <section class="text-right">
+    <% unless user_signed_in? %>  
+      <%= link_to 'Login', new_user_session_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
+    <% end %>
+
+    <% if user_signed_in? %>  
+      <%= 
+        link_to 'Logout', 
+        destroy_user_session_path,
+        data: { turbo_method: :delete },
+        class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" 
+      %>
+    <% end %>
+  </section>
+</header>
