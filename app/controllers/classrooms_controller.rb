@@ -1,6 +1,7 @@
 class ClassroomsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_classroom, only: %i[ show edit update destroy ]
+  before_action :set_students, only: %i[ new edit ]
 
   # GET /classrooms or /classrooms.json
   def index
@@ -14,7 +15,6 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new
   def new
     @classroom = Classroom.new
-    @students = Student.all
   end
 
   # GET /classrooms/1/edit
@@ -63,6 +63,10 @@ class ClassroomsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_classroom
       @classroom = Classroom.find(params[:id])
+    end
+
+    def set_students
+      @students = Student.all
     end
 
     # Only allow a list of trusted parameters through.
