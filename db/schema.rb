@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_14_013018) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_051728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_013018) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id", null: false
+    t.index ["address_id"], name: "index_students_on_address_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +69,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_013018) do
 
   add_foreign_key "classrooms", "students"
   add_foreign_key "posts", "categories"
+  add_foreign_key "students", "addresses"
 end

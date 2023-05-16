@@ -1,0 +1,13 @@
+<section class="border-b-[1px] py-10 mb-6 text-right">
+  <%= form_with url: "/search", method: :get do |form| %>
+    <%= 
+      form.text_field :query,
+      class: "shadow rounded-md border border-gray-200 outline-none py-2.5",
+      placeholder: "Buscar posts..."
+    %>
+    <%= 
+      form.submit "Search",
+      class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium"
+    %>
+  <% end %>
+</section>

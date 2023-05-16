@@ -6,7 +6,11 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Body:</strong>
-    <%= post.body %>
+    <% if action_name == 'search' %>
+      <%= post.body.truncate(10) %>
+    <% else %>
+      <%= post.body %>
+    <% end %>
   </p>
 
   <p class="my-5">

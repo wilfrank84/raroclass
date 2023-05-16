@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    @student.build_address
   end
 
   # GET /students/1/edit
@@ -66,6 +67,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:name, :email, :phone)
+      params.require(:student).permit(:name, :email, :phone, address_attributes: [:id, :address, :city, :state] )
     end
 end

@@ -7,6 +7,14 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def search
+    @posts = Post
+      .where("title ILIKE ?", "%#{params[:query]}%")
+      .or(Post.where("body ILIKE ?", "%#{params[:query]}%"))
+      
+    render :index
+  end
+
   # GET /posts/1 or /posts/1.json
   def show
   end
