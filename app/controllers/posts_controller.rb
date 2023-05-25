@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: %i[ index show ]
+  before_action :authenticate_user!, except: %i[ index show search ]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def search
     @posts = Post
       .where("title ILIKE ?", "%#{params[:query]}%")
-      .or(Post.where("body ILIKE ?", "%#{params[:query]}%"))
+      # .or(Post.where("body ILIKE ?", "%#{params[:query]}%"))
       
     render :index
   end
