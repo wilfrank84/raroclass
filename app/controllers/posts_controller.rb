@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       .where("title ILIKE ?", "%#{params[:query]}%")
       # .or(Post.where("body ILIKE ?", "%#{params[:query]}%"))
       
-    render :index
+    render partial: 'posts'
   end
 
   # GET /posts/1 or /posts/1.json
