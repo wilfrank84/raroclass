@@ -1,0 +1,7 @@
+<%= fields_for "student[phones_attributes][#{ phone.persisted? ? phone.id : Time.now.to_i }]", phone do |ff| %>
+  <div class="my-5">
+    <%= ff.label :phone_number %>
+    <%= ff.text_field :number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= ff.hidden_field :id %>
+  </div>
+<% end %>

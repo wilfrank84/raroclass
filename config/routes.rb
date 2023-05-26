@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   resources :posts
   resources :categories
   resources :classrooms
-  resources :students
+  resources :students do
+    collection do
+      get "phone_field"
+    end
+  end
 end

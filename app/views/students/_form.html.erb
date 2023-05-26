@@ -21,11 +21,6 @@
       <%= form.label :email %>
       <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
-
-    <div class="my-5">
-      <%= form.label :phone %>
-      <%= form.text_field :phone, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-    </div>
   </fieldset>
 
   <fieldset class="bg-slate-100 p-10 mb-10">
@@ -47,6 +42,16 @@
         <%= address_form.text_field :state, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
       </div>
     <% end %>
+  </fieldset>
+
+  <fieldset class="bg-slate-100 p-10 mb-10">
+    <legend class="text-xl font-bold">Phones</legend>
+
+    <div id="phones">
+      <%= render partial: "phone", collection: @student.phones %>
+    </div>
+
+    <%= link_to "Add phone", phone_field_students_path, data: { turbo_stream: true }, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </fieldset>
 
   <div class="inline">

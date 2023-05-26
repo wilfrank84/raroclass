@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def search
     @posts = Post
       .where("title ILIKE ?", "%#{params[:query]}%")
-      # .or(Post.where("body ILIKE ?", "%#{params[:query]}%"))
+      .or(Post.where("content ILIKE ?", "%#{params[:query]}%"))
       
     render partial: 'posts'
   end
@@ -74,6 +74,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :category_id)
+      params.require(:post).permit(:title, :content, :cover_image, :category_id)
     end
 end

@@ -9,10 +9,16 @@
     <%= student.email %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Phone:</strong>
-    <%= student.phone %>
-  </p>
+  <div id="phones" class="border-t-[1px] pt-5">
+    <h2 class="text-2xl mb-5">Telefones</h2>
+    <ul>
+      <% student.phones.each do |phone| %>
+        <li class="mb-5">
+          <strong>Telefone:</strong> <%= phone.number %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
   <% if action_name != "show" %>
     <%= link_to "Show this student", student, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

@@ -1,0 +1,3 @@
+<%= turbo_stream.append "phones" do %>
+  <%= render partial: "phone", locals: { phone: Phone.new } %>
+<% end %>

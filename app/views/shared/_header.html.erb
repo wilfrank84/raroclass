@@ -1,6 +1,8 @@
 <header class="flex [&>*]:flex-1 bg-slate-200 p-7">
   <section class="font-black text-2xl">
-    <h1>RaroClass</h1>
+    <h1 class="text-2xl font-bold">
+      <%= link_to 'RaroClass', root_path %> 
+    </h1>
   </section>
   <section class="text-right">
     <% unless user_signed_in? %>  
